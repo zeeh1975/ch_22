@@ -7,9 +7,11 @@
 
 
 **Notas**
+
 Se realizaron las siguientes queries de prueba:
 
 **Obtener todos los productos**
+
 *Query*
 ```
 query getallprod {
@@ -49,7 +51,9 @@ query getallprod {
 }
 ```
 
+
 **Agregar un nuevo producto**
+
 *Query*
 ```
 mutation addprod {
@@ -75,7 +79,9 @@ mutation addprod {
 }
 ```
 
+
 **Consultar producto**
+
 *Query*
 ```
 query getprod {
@@ -101,7 +107,9 @@ query getprod {
 }
 ```
 
+
 **Actualizar un producto**
+
 *Query*
 ```
 mutation modifprod {
@@ -127,7 +135,9 @@ mutation modifprod {
 }
 ```
 
+
 **Eliminar un producto**
+
 *Query*
 ```
 mutation elimprod {
