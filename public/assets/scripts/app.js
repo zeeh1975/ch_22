@@ -4,25 +4,34 @@ const chatForm = document.querySelector("#chatForm");
 const porcentajeCompresion = document.querySelector("#porcentajecompresion");
 const labelUsuario = document.querySelector("#labelusuario");
 
-// Envia una petición al servidor de
-// añadir un nuevo producto mediante fetch
+const graphql_add_producto = `
+mutation addprod($titulo: String, $precio: Float, $imagen: String) {
+  createProducto(datos: {title: $titulo, price: $precio, thumbnail: $imagen}) {
+    id
+  }
+}
+`;
+
 async function addProduct() {
   try {
     const host = window.location.protocol + "//" + window.location.host;
-    const destURL = new URL("/api/productos", host);
+    const destURL = new URL("/api/graphql", host);
+    const vars = {
+      titulo: productForm.title.value,
+      precio: +productForm.price.value,
+      imagen: productForm.thumbnail.value,
+    };
     const responseData = await fetch(destURL, {
       method: "POST",
       headers: {
-        Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: productForm.title.value,
-        price: productForm.price.value,
-        thumbnail: productForm.thumbnail.value,
+        query: graphql_add_producto,
+        variables: vars,
       }),
     });
-    if (responseData.status === HTTP_STATUS_CREATED) {
+    if (responseData.status === HTTP_STATUS_OK) {
       productForm.reset();
       productForm.title.focus();
     } else {

@@ -10,6 +10,8 @@
 
 La url para acceder a la interfaz de GraphiQL es: `http://localhost:8080/api/graphql`
 
+Los productos agregados desde el frontend son agregados mediante query de GraphQL
+
 Se realizaron las siguientes queries de prueba:
 
 **Obtener todos los productos**
